@@ -1,0 +1,27 @@
+{
+  "name": "Ranter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maplesyrupman/Ranter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maplesyrupman/Ranter/issues"
+  },
+  "homepage": "https://github.com/maplesyrupman/Ranter#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
