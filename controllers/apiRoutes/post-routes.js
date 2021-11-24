@@ -23,7 +23,7 @@ router.get('/', (req,res) => {
             'id',
             'text',
             'created_at',
-            //[sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
+           // [sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
         ],
         order: [['created_at', 'DESC']],
         include: [
@@ -93,28 +93,6 @@ router.get('/:id', (req, res) => {
 //like a post using custom static method in Post.js
 router.put('/like', (req, res) => {
 
-        // Like.create({
-        //     user_id: req.body.user_id,
-        //     post_id: req.body.post_id
-        // }).then(() => {
-        //     return Post.findOne({
-        //         where: {
-        //             id: req.body.post_id
-        //         },
-        //         attributes: [
-        //             'id',
-        //             'text',
-        //             'created_at',
-        //             [
-        //                 sequelize.literal(`(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)`),
-        //                 'like_count'
-        //             ]
-        //         ]
-            
-        //     })
-        //     .then(data => res.json(data))
-        //     .catch(err => res.json(err));
-   // }); 
         Post.like({ ...req.body, user_id: req.body.user_id }, { Like, Comment, User })
             .then(updatedData => res.json(updatedData))
             .catch(err => {

@@ -16,10 +16,7 @@ class Post extends Model {
                     'id',
                     'text',
                     'created_at',
-                    [
-                        sequelize.literal(`(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)`),
-                        'like_count'
-                    ]
+                    [sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)'),'like_count']
                 ]
             });
         });
@@ -66,8 +63,7 @@ Post.init(
         underscored: true,
         modelName: 'post'
     }
-
-    
+   
 );
 
 module.exports = Post
