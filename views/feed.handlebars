@@ -1,0 +1,28 @@
+{{!-- create a post --}}
+<section>
+  <h2>Add a Rant</h2>
+
+  <form class="new-post-form">
+    <div class="text">
+      {{text}}
+    </div>
+    
+    <button type="submit" class="btn">Rant</button>
+  </form>
+</section>
+
+
+
+{{!-- view list of 10 most recent posts --}}
+
+
+
+<ol class="post-list">
+    {{#each posts as |post|}}
+    <li>
+        {{> post-view post}}
+    </li>
+    {{/each}}
+</ol>
+
+
