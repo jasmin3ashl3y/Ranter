@@ -5,7 +5,7 @@ class Like extends Model {
 
 }
 
-// like has an id? , user_id, post_id, 
+// like has an id? , user_id, post_id, like_count???
 Like.init( 
     {
     id: {

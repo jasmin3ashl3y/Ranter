@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const {User, Post, Comment, Like} = require('../../models')
 
+
+
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
@@ -8,7 +10,7 @@ router.post('/', (req, res) => {
         password: req.body.password
     })
     .then(dbUserData => {
-        res.status(200).json(dbUserData)
+        res.status(200).json(dbUserData);
     })
     .catch(err => {
         console.log(err)
