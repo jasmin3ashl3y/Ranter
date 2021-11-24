@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const { User, Post, Comment, Like } = require('../../models')
 const sequelize = require('../../config/connection')
-//routes - create a post, view all posts, get posts by a specific user, 
-//edit a post, delete a post
+
 
 //create a post WORKS
 router.post('/', (req, res) => {
@@ -50,7 +49,7 @@ router.get('/', (req,res) => {
     
 });
 
-//WORKS (except like_count)git ad
+//WORKS (except like_count)
 router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
@@ -91,7 +90,41 @@ router.get('/:id', (req, res) => {
         });
 });
 
-//update a post
+//like a post using custom static method in Post.js
+router.put('/like', (req, res) => {
+
+        // Like.create({
+        //     user_id: req.body.user_id,
+        //     post_id: req.body.post_id
+        // }).then(() => {
+        //     return Post.findOne({
+        //         where: {
+        //             id: req.body.post_id
+        //         },
+        //         attributes: [
+        //             'id',
+        //             'text',
+        //             'created_at',
+        //             [
+        //                 sequelize.literal(`(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)`),
+        //                 'like_count'
+        //             ]
+        //         ]
+            
+        //     })
+        //     .then(data => res.json(data))
+        //     .catch(err => res.json(err));
+   // }); 
+        Post.like({ ...req.body, user_id: req.body.user_id }, { Like, Comment, User })
+            .then(updatedData => res.json(updatedData))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+          
+});
+
+//update a post WORKS
 router.put('/:id', (req,res) => {
     Post.update(
         {
@@ -116,19 +149,9 @@ router.put('/:id', (req,res) => {
         });
 });
 
-//like a post using custom static method in Post.js
-router.put('/like', (req, res) => {
-    
-        Post.like({ ...req.body, user_id: req.body.user_id }, { Like, Comment, User })
-            .then(updatedData => res.json(updatedData))
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-        
-});
 
-//delete a post
+
+//delete a post WORKS
 router.delete('/:id', (req, res) => {
     Post.destroy({
       where: {
