@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const { User, Post, Comment, Like } = require('../../models')
-
+const sequelize = require('../../config/connection')
 //routes - create a post, view all posts, get posts by a specific user, 
 //edit a post, delete a post
 
-//create a post
+//create a post WORKS
 router.post('/', (req, res) => {
     Post.create({
         text: req.body.text,
@@ -16,14 +16,15 @@ router.post('/', (req, res) => {
             res.status(500).json(err);
         })
 });
-//view all posts
+
+//view all posts WORKS (except like_count)
 router.get('/', (req,res) => {
     Post.findAll({
         attributes: [
             'id',
             'text',
             'created_at',
-            [sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
+            //[sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
         ],
         order: [['created_at', 'DESC']],
         include: [
@@ -49,6 +50,7 @@ router.get('/', (req,res) => {
     
 });
 
+//WORKS (except like_count)git ad
 router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
@@ -58,7 +60,7 @@ router.get('/:id', (req, res) => {
             'id', 
             'text', 
             'created_at',
-            [sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
+            //[sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
             
         ],
         include:[
