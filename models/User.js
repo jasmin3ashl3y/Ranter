@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes, Sequelize } = require('sequelize')
 const sequelize = require('../config/connection')
 const bcrypt = require('bcrypt')
 
@@ -35,6 +35,14 @@ User.init(
             validate: {
                 len: [4]
             }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: Sequelize.literal('NOW()')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: Sequelize.literal('NOW()')
         }
     },
     {
@@ -49,7 +57,6 @@ User.init(
             }
         },
         sequelize,
-        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'user'
