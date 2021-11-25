@@ -17,11 +17,18 @@ VALUES
     ('text5',3),
     ('text6',5);
 
--- INSERT INTO comment (comment_text)
--- VALUES
---     ('comment1'),
---     ('comment2'),
---     ('comment3'),
---     ('comment4'),
---     ('comment5'),
---     ('comment6');
+INSERT INTO comment (comment_text, user_id, post_id)
+VALUES
+    ('comment1', 2, 1),
+    ('comment2', 6, 1),
+    ('comment3', 1, 2),
+    ('comment4', 4, 3),
+    ('comment5', 5, 4),
+    ('comment6', 1, 4);
+
+INSERT INTO heart (user_id, post_id)
+VALUES
+    (1,2),
+    (1,3),
+    (1,4),
+    (1,5);

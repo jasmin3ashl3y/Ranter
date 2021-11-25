@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Post, Comment, Like } = require('../../models')
+const { User, Post, Comment, Heart } = require('../../models')
 const sequelize = require('../../config/connection')
 
 
@@ -23,7 +23,7 @@ router.get('/', (req,res) => {
             'id',
             'text',
             'created_at',
-           // [sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
+            [sequelize.literal('(SELECT COUNT(*) FROM heart WHERE post.id = heart.post_id)'), 'heart_count']
         ],
         order: [['created_at', 'DESC']],
         include: [
@@ -59,7 +59,7 @@ router.get('/:id', (req, res) => {
             'id', 
             'text', 
             'created_at',
-            //[sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)','like_count')]
+            [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count']
             
         ],
         include:[
@@ -91,9 +91,9 @@ router.get('/:id', (req, res) => {
 });
 
 //like a post using custom static method in Post.js
-router.put('/like', (req, res) => {
+router.put('/heart', (req, res) => {
 
-        Post.like({ ...req.body, user_id: req.body.user_id }, { Like, Comment, User })
+        Post.heart({ ...req.body, user_id: req.body.user_id }, { Heart, Comment, User })
             .then(updatedData => res.json(updatedData))
             .catch(err => {
                 console.log(err);
