@@ -34,6 +34,7 @@ Follow.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
+        timestamps: false,
         modelName: 'follow'
     }
 )
