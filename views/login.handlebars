@@ -7,9 +7,61 @@
             <div class="card-body p-4 p-sm-5">
                 <h5 class="card-title text-center mb-5 fw-bold fs-1">Ranter</h5>
                 
-                <main>
-                  {{{ }}}
-                </main>
+                <form class='login-form'>
+
+                    <div class="form-floating mb-3">
+                        <input type="username" class="form-control" id="floatingInput username-login" placeholder="Username">
+                        <label for="floatingInput">Username</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword password-login" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign In</button>
+                    </div>
+
+                    <div class="mb-2">
+                        <p>Don't have an account? <button class="btn btn-signup fw-bold mb-2" type="submit">
+                            <a href="./">Sign Up</a> </button>
+                        </p>
+                    </div>
+                </form>
+
+                <form class='signup-form'>
+
+                    <div class="form-floating mb-3">
+                        <input type="username" class="form-control" id="floatingInput username-signup" placeholder="Username">
+                        <label for="floatingInput">Choose a Username</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingEmail email-signup" placeholder="name@example.com">
+                        <label for="floatingEmail">Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword password-signup" placeholder="Password">
+                        <label for="floatingPassword">Choose a Password</label>
+                    </div>
+
+                   
+
+                    
+                    
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign Up</button>
+                    </div>
+
+                    <div class="mb-2">
+                        <p>Already have an account? <button class="btn btn-signup fw-bold mb-2" type="submit">
+                            <a href="./">Sign In</a> </button>
+                        </p>
+                    </div>
+                                
+                </form>
 
             </div>
         </div>
@@ -17,63 +69,6 @@
 </div>
 
 
-<form class='login-form'>
-
-    <div class="form-floating mb-3">
-        <input type="username" class="form-control" id="floatingInput username-login" placeholder="Username">
-        <label for="floatingInput">Username</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="floatingPassword password-login" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-    </div>
-    
-    <div class="d-grid">
-        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign In</button>
-    </div>
-
-    <div class="mb-2">
-        <p>Don't have an account? <button class="btn btn-signup fw-bold mb-2" type="submit">
-            <a href="./">Sign Up</a> </button>
-        </p>
-    </div>
-
-</form>
-
-<form class='login-form'>
-
-    <div class="form-floating mb-3">
-        <input type="username" class="form-control" id="floatingInput choose-username-signup" placeholder="Username">
-        <label for="floatingInput">Choose a Username</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="floatingPassword choose-password-signup" placeholder="Password">
-        <label for="floatingPassword">Choose a Password</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input type="confirmPassword" class="form-control" id="floatingPassword confirm-password-signup" placeholder="Confirm Password">
-        <label for="floatingPassword">Confirm Password</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingEmail email-signup" placeholder="name@example.com">
-        <label for="floatingEmail">Email</label>
-    </div>
-    
-    <div class="d-grid">
-        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign Up</button>
-    </div>
-
-    <div class="mb-2">
-        <p>Already have an account? <button class="btn btn-signup fw-bold mb-2" type="submit">
-            <a href="./">Sign In</a> </button>
-        </p>
-    </div>
-                  
-</form>
-             
+        
 
 <script src='../public/assets/js/login.js'></script>

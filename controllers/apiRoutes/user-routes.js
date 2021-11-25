@@ -75,4 +75,17 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
+router.get('/find/:term', (req, res) => {
+    userHandlers.getUsers(req.params.term)
+    .then(dbUserData => {
+        console.log(dbUserData.length)
+        if (dbUserData.length) {
+            res.status(200).json(dbUserData)
+        } else {
+            res.status(404).json({message: 'no users found matching that query'})
+        }
+    })
+    .catch(err => res.status(500).json(err))
+})
+
 module.exports = router 
