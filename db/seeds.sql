@@ -8,14 +8,14 @@ VALUES
     ('differentgirl', 'differentgirl@email.ca', 'somepassword');
 
 
-INSERT INTO post (text)
+INSERT INTO post (text, user_id)
 VALUES
-    ('text1'),
-    ('text2'),
-    ('text3'),
-    ('text4'),
-    ('text5'),
-    ('text6');
+    ('text1',1),
+    ('text2',2),
+    ('text3',3),
+    ('text4',3),
+    ('text5',3),
+    ('text6',5);
 
 -- INSERT INTO comment (comment_text)
 -- VALUES

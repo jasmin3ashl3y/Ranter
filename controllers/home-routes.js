@@ -5,7 +5,12 @@ router.use('/login', (req, res) => {
 })
 
 router.use('/feed', (req, res) => {
-    res.render('feed')
+    if (req.session.loggedIn) {
+        res.render('feed')
+    } else {
+        res.redirect('/login')
+    }
+
 })
 
 module.exports = router
