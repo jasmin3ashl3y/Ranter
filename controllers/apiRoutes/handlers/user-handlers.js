@@ -1,5 +1,6 @@
 const { User, Follow } = require('../../../models')
 const {Op} = require('sequelize')
+const sequelize = require('../../../config/connection')
 
 function createUser(username, email, password) {
     return User.create({
@@ -23,10 +24,9 @@ function getUser(id) {
         include: [
             {
                 model: User,
-                attributes: ['username'],
+                attributes: ['id', 'username'],
                 through: Follow,
-                as: 'followers',
-                where: {followed_id: id}
+                as: 'followers'
             }
         ]
     })

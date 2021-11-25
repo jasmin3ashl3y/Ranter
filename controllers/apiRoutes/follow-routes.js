@@ -4,16 +4,17 @@ const {Follow} = require('../../models')
 router.post('/', async (req, res) => {
     const isFollowing = await Follow.findOne({
         where: {
-            followedId: req.body.followedId,
-            followerId: req.body.followerId
+            followed_id: req.body.followedId,
+            follower_id: req.body.followerId
         }
     })
     if (isFollowing) {
         res.status(400).json({ message: 'following relationship already exists' }).end()
+        return;
     }
     Follow.create({
-        followedId: req.body.followedId,
-        followerId: req.body.followerId
+        followed_id: req.body.followedId,
+        follower_id: req.body.followerId
     })
     .then(dbUserData => {
         res.status(200).json(dbUserData)
@@ -24,8 +25,8 @@ router.post('/', async (req, res) => {
 router.delete('/', (req, res) => {
     Follow.destroy({
         where: {
-            followedId: req.body.followedId,
-            followerId: req.body.followerId
+            followed_id: req.body.followedId,
+            follower_id: req.body.followerId
         }
     })
     .then(dbFollowData => {
@@ -37,7 +38,7 @@ router.delete('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Follow.findAll({
         where: {
-            followedId: req.params.id
+            followed_id: req.params.id
         }
     })
     .then(dbFollowData => res.status(200).json(dbFollowData))

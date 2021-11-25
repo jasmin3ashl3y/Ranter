@@ -13,7 +13,7 @@ Follow.init(
             primaryKey: true,
             autoIncrement: true
         },
-        followedId: {
+        follower_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -21,7 +21,7 @@ Follow.init(
                 key: 'id'
             }
         },
-        followerId: {
+        followed_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
