@@ -46,24 +46,24 @@ async function signupFormHandler(event) {
   //            alert("Username already exists.")
   //         }
 
-  if (choosePassword && confirmPassword === true) {
-    const response = await fetch('/api/login', {
-      method: 'get',
-      body: JSON.stringify({
-        chooseUsername,
-        choosePassword,
-        confirmPassword
-      }),
-      headers: { 'Content-Type': 'application/json' }
-    });
+//   if (choosePassword && confirmPassword === true) {
+//     const response = await fetch('/api/login', {
+//       method: 'get',
+//       body: JSON.stringify({
+//         chooseUsername,
+//         choosePassword,
+//         confirmPassword
+//       }),
+//       headers: { 'Content-Type': 'application/json' }
+//     });
 
-    if (response.ok) {
-      document.location.replace('/feed');
-    } else {
-      alert(response.statusText);
-    }
-  }
-}
+//     if (response.ok) {
+//       document.location.replace('/feed');
+//     } else {
+//       alert(response.statusText);
+//     }
+//   }
+// }
 
 
 
