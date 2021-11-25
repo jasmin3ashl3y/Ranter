@@ -63,7 +63,7 @@ async function signupFormHandler(event) {
 //       alert(response.statusText);
 //     }
 //   }
-// }
+}
 
 
 
