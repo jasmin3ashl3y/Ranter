@@ -1,4 +1,5 @@
-const { User } = require('../../../models')
+const { User, Follow } = require('../../../models')
+const {Op} = require('sequelize')
 
 function createUser(username, email, password) {
     return User.create({
@@ -20,9 +21,25 @@ function getUser(id) {
             id
         },
         include: [
-            //write logic to get posts here
+            {
+                model: User,
+                attributes: ['username'],
+                through: Follow,
+                as: 'followers',
+                where: {followed_id: id}
+            }
         ]
     })
 }
 
-module.exports = {createUser, getAllUsers, getUser}
+function getUsers(searchTerm) {
+    return User.findAll({
+        where: {
+            username: {
+                [Op.like]: `%${searchTerm}%`
+            }
+        }
+    })
+}
+
+module.exports = {createUser, getAllUsers, getUser, getUsers}
