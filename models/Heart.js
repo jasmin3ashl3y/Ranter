@@ -7,11 +7,10 @@ Heart.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        userId: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -19,7 +18,7 @@ Heart.init(
                 key: 'id'
             }
         },
-        postId: {
+        post_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -27,7 +26,7 @@ Heart.init(
                 key: 'id'
             }
         }
-    },
+    }, 
     {
         sequelize,
         timestamps: false,

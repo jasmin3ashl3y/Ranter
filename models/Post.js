@@ -6,8 +6,7 @@ class Post extends Model {
         return models.Heart.create({
             user_id: body.user_id,
             post_id: body.post_id
-        })
-        .then(() => {
+        }).then(() => {
             return Post.findOne({
                 where: {
                     id: body.post_id
@@ -16,10 +15,13 @@ class Post extends Model {
                     'id',
                     'text',
                     'created_at',
-                    [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count']
+                    [
+                        sequelize.literal('(SELECT COUNT(*) FROM heart WHERE post.id = heart.post_id)'),
+                        'heart_count'
+                    ]
                 ]
-            });
-        });
+            })
+        })
     }
 }
 
