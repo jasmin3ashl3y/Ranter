@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes, Sequelize } = require('sequelize')
 const sequelize = require('../config/connection')
 
 class Post extends Model {
@@ -16,10 +16,7 @@ class Post extends Model {
                     'id',
                     'text',
                     'created_at',
-                    [
-                        sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)'),
-                        'like_count'
-                    ]
+                    [sequelize.literal('(SELECT COUNT (*) FROM like WHERE post.id = like.post_id)'),'like_count']
                 ]
             });
         });
@@ -49,6 +46,14 @@ Post.init(
                 model: 'user',
                 key: 'id'
             }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: Sequelize.literal('NOW()')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: Sequelize.literal('NOW()')
         }
     },
     {
@@ -58,8 +63,7 @@ Post.init(
         underscored: true,
         modelName: 'post'
     }
-
-    
+   
 );
 
 module.exports = Post

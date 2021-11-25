@@ -1,11 +1,8 @@
 const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
 
-class Like extends Model {
+class Like extends Model {}
 
-}
-
-// like has an id? , user_id, post_id, 
 Like.init( 
     {
     id: {
