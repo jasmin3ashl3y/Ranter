@@ -17,7 +17,9 @@ body {
     text-align: end;
 }
 
-/* navbar every page except for login and sign up */
+.hide {
+    display: none;
+}
 
 
 
