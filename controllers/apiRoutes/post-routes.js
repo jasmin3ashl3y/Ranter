@@ -83,6 +83,7 @@ router.get('/:id', (req, res) => {
                 return;
             }
             res.json(data);
+            console.log(data.get({plain: true}))
         })
         .catch(err => {
             console.log(err);

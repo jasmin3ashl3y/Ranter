@@ -1,12 +1,15 @@
-<article class="post">
-    <div class='text'>
-       {{text}} 
-    </div>
-    <div class="meta">
-        {{heart_count}}{{format_plural "like" heart_count}} by {{user.username}} on
-        {{format_date created_at}}
-     </div>
-     <div>
-        <p>{{post_text}}</p>
-     </div>
-</article>
+<section>
+   <div class="card" style='width: 30rem'>
+      <div class="card-body post">
+         <h5 class='card-title text-muted'>@{{{user.username}}}</h5>
+         <div class='p-4'>
+            <p class='cart-text'>{{{text}}}</p>
+         </div>
+
+         <div class='card-body'>
+            <p>{{createdAt}}</p>
+            <p><span class="fas fa-heart"></span> {{heart_count}}</p>
+         </div>
+      </div>
+   </div>
+</section>
