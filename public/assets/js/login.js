@@ -1,4 +1,6 @@
-
+const formContainer = document.getElementById("signinUpContainer");
+const signupForm = document.getElementById("signup-form");
+const signinForm = document.getElementById("signin-form");
 
 async function loginFormHandler(event) {
     event.preventDefault();
@@ -51,14 +53,26 @@ async function loginFormHandler(event) {
     }
 }
 
-
-
-
+function toggleForms(e) {
+  e.preventDefault();
+  const target = e.target;
   
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+  if (target.id=="switch-to-signup") {
+    signinForm.classList.add("hide");
+    signupForm.classList.remove("hide");
+  } else if(target.id == "switch-to-signin") {
+    signupForm.classList.add('hide');
+    signinForm.classList.remove('hide');
+  }
+
+}
+
+formContainer.addEventListener('click', toggleForms);
+  
+// document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 // document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 
-document.querySelector('#test').addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log('success!')
-})
+// document.querySelector('#test').addEventListener('click', (e) => {
+//   e.preventDefault()
+//   console.log('success!')
+// })

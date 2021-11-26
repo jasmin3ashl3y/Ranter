@@ -1,6 +1,6 @@
 # Ranter
 
-Ranter is a blog post website where you can rant to your heart's desire. Our inspiration came from Twitter, where you can post or "tweet" short messages, and others can reply to it on a thread.
+Ranter is a blog post website where you can rant to your heart's desire. Our inspiration came from Twitter, where you can post or "tweet" short messages (in our case, "rant") and others can reply to it on a thread. 
 
 ## Screenshots
 
