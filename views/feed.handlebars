@@ -12,12 +12,14 @@
 </section>
 
 
-<div class='container-fluid d-flex justify-content-center'>
-  {{> post-view post}}
+<div class='container-fluid d-flex flex-column justify-content-center align-items-center'>
+  {{#each posts as |post|}}
+    {{> post-view post}}
+  {{/each}}
 </div>
 
 
-<script src='../public/assets/js/add-rant.js'></script>
+<script src='/assets/js/add-rant.js'></script>
 
 
 

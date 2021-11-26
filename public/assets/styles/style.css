@@ -22,8 +22,16 @@ body {
 
 
 
-.post{
-    color: red;
+.post-text{
+    background-color: rgb(228, 228, 228);
+    border-radius: 10px;
+}
+
+.post {
+    border-radius: 15px;
 }
 
 
+.fs-7 {
+    font-size: 0.85rem;
+}

@@ -7,7 +7,37 @@ router.use('/login', (req, res) => {
 })
 
 router.use('/feed', (req, res) => {
-    res.render('feed')
+    Post.findAll({
+        attributes: [
+            'id', 
+            'text', 
+            'created_at',
+            [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count'],
+            [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE post.id = comment.post_id)'), 'comment_count']
+            
+        ],
+        include:[
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+    .then(dbPostData => {
+        if (!dbPostData) {
+            //put logic to display no posts from followers page
+        }
+        const posts = dbPostData.map(post => post.get({plain: true}))
+        res.render('feed', {posts})
+    })
 
 })
 
@@ -20,7 +50,8 @@ router.use('/post/:id', (req, res) => {
             'id', 
             'text', 
             'created_at',
-            [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count']
+            [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count'],
+            [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE post.id = comment.post_id)'), 'comment_count']
             
         ],
         include:[

@@ -59,7 +59,8 @@ router.get('/:id', (req, res) => {
             'id', 
             'text', 
             'created_at',
-            [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count']
+            [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count'],
+            [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE post.id = comment.post_id)'), 'comment_count']
             
         ],
         include:[

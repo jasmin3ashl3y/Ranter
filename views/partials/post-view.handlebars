@@ -1,15 +1,25 @@
-<section>
-   <div class="card" style='width: 30rem'>
-      <div class="card-body post">
-         <h5 class='card-title text-muted'>@{{{user.username}}}</h5>
-         <div class='p-4'>
-            <p class='cart-text'>{{{text}}}</p>
-         </div>
 
+   <div class="card post my-3" style='width: 30rem'>
+      <div class="card-body">
+         <h5 class='card-title text-muted'>@{{{user.username}}}</h5>
+         <div class='p-3 post-text'>
+            <p class='card-text fs-5'>{{{text}}}</p>
+         </div>
+         <p class='fst-italic fw-light text-end me-2 fs-6'>{{format_date created_at}}</p>
          <div class='card-body'>
-            <p>{{createdAt}}</p>
-            <p><span class="fas fa-heart"></span> {{heart_count}}</p>
+
+            <div class='d-flex'>
+               <p class='me-3'><span class="fas fa-heart"></span> {{heart_count}}</p>
+               <a data-bs-toggle="collapse" href="#comments{{id}}" role="button" aria-expanded="false" aria-controls="comments{{id}}">
+                  <span class="fas fa-comments"></span> {{comment_count}}
+               </a>
+            </div>
+            <div class="collapse" id="comments{{id}}">
+               <div class="card card-body">
+                  {{> comments comments}}
+               </div>
+            </div>
          </div>
       </div>
    </div>
-</section>
+
