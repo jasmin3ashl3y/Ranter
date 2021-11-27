@@ -12,16 +12,14 @@
 </section>
 
 
+<div class='container-fluid d-flex flex-column justify-content-center align-items-center'>
+  {{#each posts as |post|}}
+    {{> post-view post}}
+  {{/each}}
+</div>
 
-{{!-- view list of 10 most recent posts --}}
 
-<ol class="post-list">
-    {{#each posts as |post|}}
-      {{> post-view post}}
-    {{/each}}
-</ol>
-
-<script src='../public/assets/js/add-rant.js'></script>
+<script src='/assets/js/add-rant.js'></script>
 
 
 
