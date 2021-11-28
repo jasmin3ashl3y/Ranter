@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {Post, Comment, User} = require('../models')
 const sequelize = require('../config/connection')
+const {userHandlers} = require('../controllers/apiRoutes/handlers')
 
 router.use('/login', (req, res) => {
     res.render('login')
@@ -83,6 +84,14 @@ router.use('/post/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+router.use('/users/find/:query', (req, res) => {
+    userHandlers.getUsers(req.params.query)
+    .then(dbUserData => {
+        const users = dbUserData.map(user => user.get({plain: true}))
+        res.render('user-search', {users})
+    })
+})
 
 
 module.exports = router

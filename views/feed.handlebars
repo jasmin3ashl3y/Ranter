@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{!-- create a post --}}
 <section>
   <h2>Add a Rant</h2>
@@ -11,7 +12,19 @@
 </section>
 
 
+=======
+>>>>>>> d1feb79f30249aecd0d6a93c89f6c5c509388f20
 <div class='container-fluid d-flex flex-column justify-content-center align-items-center'>
+  <section class='border border-2 py-3 px-5 my-3 mt-4 post card'>
+    <form class="new-post-form">
+      <div class="mb-3">
+        <label for="rant-textarea" class="form-label">Go ahead, rant...</label>
+        <textarea class="form-control post-text" id="rant-textarea" rows="4"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary float-end"><span class="fas fa-bullhorn"></span></button>
+    </form>
+  </section>
+
   {{#each posts as |post|}}
     {{> post-view post}}
   {{/each}}
