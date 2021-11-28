@@ -1,8 +1,9 @@
 async function newFormHandler(event) {
     event.preventDefault();
   
-    const text = document.querySelector('input[name="text"]').value;
-    
+    //const text = document.querySelector('input[name="text"]').value;
+    const text = document.getElementById("rant-textarea").value;
+    console.log(text)
   
     const response = await fetch(`/api/post`, {
       method: 'POST',
@@ -17,9 +18,10 @@ async function newFormHandler(event) {
     if (response.ok) {
       //how to add new post to feed
       document.location.reload('/feed');
+      console.log('success')
     } else {
       alert(response.statusText);
     }
   }
   
-  document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+  document.querySelector('#submit-rant').addEventListener('click', newFormHandler);
