@@ -43,7 +43,6 @@ router.use('/feed', (req, res) => {
             username: req.session.username
         })
     })
-
 })
 
 router.use('/post/:id', (req, res) => {
