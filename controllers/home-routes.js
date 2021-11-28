@@ -37,7 +37,10 @@ router.use('/feed', (req, res) => {
             //put logic to display no posts from followers page
         }
         const posts = dbPostData.map(post => post.get({plain: true}))
-        res.render('feed', {posts})
+        res.render('feed', {
+            posts,
+            loggedIn: req.session.loggedIn
+        })
     })
 
 })
