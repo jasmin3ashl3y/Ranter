@@ -7,7 +7,8 @@ const sequelize = require('../../config/connection')
 router.post('/', (req, res) => {
     Post.create({
         text: req.body.text,
-        user_id: req.body.user_id
+        user_id: req.session.user_id,
+        post_id: req.body.post_id
     })
         .then(data => res.json(data))
         .catch(err => {

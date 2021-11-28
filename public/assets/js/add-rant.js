@@ -15,7 +15,8 @@ async function newFormHandler(event) {
     });
   
     if (response.ok) {
-      document.location.replace('/feed');
+      //how to add new post to feed
+      document.location.reload('/feed');
     } else {
       alert(response.statusText);
     }
