@@ -32,12 +32,14 @@ router.post('/login', (req, res) => {
             return
         }
 
+        // uncomment at launch
         // if(!dbUserData.checkPassword(req.body.password)) {
         //     res.status(400).json({message: 'Incorrect username or password'})
         //     return
         // }
 
         req.session.save(() => {
+            console.log(dbUserData.id)
             req.session.user_id = dbUserData.id
             req.session.username = dbUserData.username
             req.session.loggedIn = true

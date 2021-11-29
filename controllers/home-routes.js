@@ -2,18 +2,22 @@ const router = require('express').Router()
 const {Post, Comment, User} = require('../models')
 const sequelize = require('../config/connection')
 const {userHandlers} = require('../controllers/apiRoutes/handlers')
+const { Op, QueryTypes } = require('sequelize')
 
 router.use('/login', (req, res) => {
     res.render('login')
 })
 
-router.use('/feed', (req, res) => {
+router.use('/feed', async (req, res) => {
+    const usersFollowing = await sequelize.query(`(SELECT followed_id FROM follow WHERE follower_id = ${req.session.user_id})`, { type: QueryTypes.SELECT })
+    const userIds = usersFollowing.map(({followed_id}) => followed_id)
+    userIds.push(req.session.user_id)
     Post.findAll({
-        //
-        // where: {
-        //     user_id: req.session.user_id
-        // },
-        //
+        where: {
+            user_id: {
+                [Op.or]: userIds
+            }
+        },
         attributes: [
             'id', 
             'text', 
@@ -35,6 +39,9 @@ router.use('/feed', (req, res) => {
                 model: User,
                 attributes: ['username']
             }
+        ],
+        order: [
+            ['created_at', 'DESC']
         ]
     })
     .then(dbPostData => {
@@ -45,7 +52,7 @@ router.use('/feed', (req, res) => {
         res.render('feed', {
             posts,
             loggedIn: req.session.loggedIn,
-            username: req.session.username
+            username: req.session.username,
         })
     })
 })
@@ -97,7 +104,11 @@ router.use('/users/find/:query', (req, res) => {
     userHandlers.getUsers(req.params.query)
     .then(dbUserData => {
         const users = dbUserData.map(user => user.get({plain: true}))
-        res.render('user-search', {users})
+        res.render('user-search', {
+            users, 
+            username: req.session.username,
+
+        })
     })
 })
 
