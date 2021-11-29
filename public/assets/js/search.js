@@ -12,5 +12,3 @@ function searchHandler(e) {
 }
 
 searchForm.addEventListener('submit', searchHandler)
-
-// searchBtn.addEventListener('click', () => console.log('hell0'))
