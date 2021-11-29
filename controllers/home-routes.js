@@ -9,6 +9,10 @@ router.use('/login', (req, res) => {
 })
 
 router.use('/feed', async (req, res) => {
+    if(!req.session.loggedIn) {
+        res.redirect('/login')
+        return
+    }
     const usersFollowing = await sequelize.query(`(SELECT followed_id FROM follow WHERE follower_id = ${req.session.user_id})`, { type: QueryTypes.SELECT })
     const userIds = usersFollowing.map(({followed_id}) => followed_id)
     userIds.push(req.session.user_id)
@@ -107,6 +111,7 @@ router.use('/users/find/:query', (req, res) => {
         res.render('user-search', {
             users, 
             username: req.session.username,
+            loggedIn: req.session.loggedIn
 
         })
     })
