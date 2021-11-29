@@ -9,6 +9,11 @@ router.use('/login', (req, res) => {
 
 router.use('/feed', (req, res) => {
     Post.findAll({
+        //
+        // where: {
+        //     user_id: req.session.user_id
+        // },
+        //
         attributes: [
             'id', 
             'text', 
