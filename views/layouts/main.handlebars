@@ -15,9 +15,9 @@
         <div class="container-fluid">
             
             <a class="navbar-brand fs-2" href="http://localhost:3003/feed">
-            <p>Ranter</p>
+            <p>Ranter <i class="fa fa-bullhorn"></i></p>
             </a>
-
+            {{#if loggedIn}}
             <form class="d-flex" id='search-form'>
                 <div class="form-outline rounded-3">
                     <input id="search-input" type="search" id="" class="form-control" placeholder="Search Ranter..." aria-label="Search"/>
@@ -40,7 +40,7 @@
                     <li><a class="dropdown-item" href="#">Separated link</a></li> --}}
                 </ul>
             </div>
-
+            {{/if}}
         </div>
     </nav>
 
@@ -54,8 +54,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+{{#if loggedIn}}
 <script src='/assets/js/search.js'></script>
 <script src='/assets/js/logout.js'></script>
-
+{{/if}}
 
 </html>
