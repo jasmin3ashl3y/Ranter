@@ -1,14 +1,25 @@
 <div class="card my-1 rounded-pill" style='width: 40rem;'>
-  <div class="card-body d-flex justify-content-between align-items-center">
+  <div class="card-body d-flex justify-content-between align-items-center" data-user-Id={{{this.id}}}>
     <div class='d-flex align-items-center'>
       <div class='border rounded-circle bg-danger' style='width: 2.1rem; height: 2.1rem'></div>
       <h6 class='ms-2 my-0'>@{{{this.username}}}</h6>
     </div>
     <div style='d-flex'>
-      <span>#<i class="fa fa-bullhorn"></i></span>
-      <span>#<i class="fa fa-comments"></i></span>
-      <span>#<i class="fa fa-heart"></i></span>
+      <span class='me-1'>{{{this.post_count}}}<i class="fa fa-bullhorn"></i></span>
+      <span class='me-1'>{{{this.comment_count}}}<i class="fa fa-comments"></i></span>
     </div>
-    <button type="button" class="btn btn-outline-primary rounded-pill">follow</button>
+    <button type="button" class="btn 
+    {{#if this.following}}
+    btn-primary
+    {{else}}
+    btn-outline-primary
+    {{/if}}
+    rounded-pill">
+    {{#if this.following}}
+    following
+    {{else}}
+    follow
+    {{/if}}
+    </button>
   </div>
 </div>

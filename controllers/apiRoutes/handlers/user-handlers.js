@@ -34,6 +34,14 @@ function getUser(id) {
 
 function getUsers(searchTerm) {
     return User.findAll({
+        attributes: [
+            'id',
+            'username',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT (*) FROM post WHERE post.user_id = user.id)'), 'post_count'],
+            [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE comment.user_id = user.id)'), 'comment_count']
+    
+        ],
         where: {
             username: {
                 [Op.like]: `%${searchTerm}%`

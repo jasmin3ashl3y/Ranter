@@ -4,8 +4,8 @@ const {Follow} = require('../../models')
 router.post('/', async (req, res) => {
     const isFollowing = await Follow.findOne({
         where: {
-            followed_id: req.body.followedId,
-            follower_id: req.body.followerId
+            followed_id: req.body.followed_id,
+            follower_id: req.session.user_id
         }
     })
     if (isFollowing) {
@@ -13,8 +13,8 @@ router.post('/', async (req, res) => {
         return;
     }
     Follow.create({
-        followed_id: req.body.followedId,
-        follower_id: req.body.followerId
+        followed_id: req.body.followed_id,
+        follower_id: req.session.user_id
     })
     .then(dbUserData => {
         res.status(200).json(dbUserData)
@@ -22,11 +22,11 @@ router.post('/', async (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
-router.delete('/', (req, res) => {
+router.post('/remove', (req, res) => {
     Follow.destroy({
         where: {
-            followed_id: req.body.followedId,
-            follower_id: req.body.followerId
+            followed_id: req.body.followed_id,
+            follower_id: req.session.user_id
         }
     })
     .then(dbFollowData => {

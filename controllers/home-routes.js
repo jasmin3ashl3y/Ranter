@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const {Post, Comment, User} = require('../models')
+const {Post, Comment, User, Follow} = require('../models')
 const sequelize = require('../config/connection')
 const {userHandlers} = require('../controllers/apiRoutes/handlers')
 const { Op, QueryTypes } = require('sequelize')
+const { is_following } = require('../utils/helpers')
 
 router.use('/login', (req, res) => {
     res.render('login')
@@ -104,15 +105,18 @@ router.use('/post/:id', (req, res) => {
         });
 });
 
-router.use('/users/find/:query', (req, res) => {
+router.use('/users/find/:query', async (req, res) => {
+    const usersFollowing = await sequelize.query(`(SELECT followed_id FROM follow WHERE follower_id = ${req.session.user_id})`, { type: QueryTypes.SELECT })
+    const usersFollowingIds = usersFollowing.map(({followed_id}) => followed_id)
     userHandlers.getUsers(req.params.query)
     .then(dbUserData => {
         const users = dbUserData.map(user => user.get({plain: true}))
+        users.forEach(user => user.following = is_following(user.id, usersFollowingIds))
         res.render('user-search', {
             users, 
             username: req.session.username,
-            loggedIn: req.session.loggedIn
-
+            loggedIn: req.session.loggedIn,
+            usersFollowingIds
         })
     })
 })

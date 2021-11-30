@@ -1,5 +1,7 @@
-<div class='container-fluid d-flex flex-column justify-content-center align-items-center'>
+<div id='user-search-results' class='container-fluid d-flex flex-column justify-content-center align-items-center'>
     {{#each users as |user|}}
         {{> user-pill user}}
     {{/each}}
 </div>
+
+<script src='/assets/js/follow.js'></script>

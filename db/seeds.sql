@@ -5,7 +5,18 @@ VALUES
     ('differentguy', 'differentguy@email.ca', 'somepassword'),
     ('somegirl', 'somegirl@email.ca', 'somepassword'),
     ('anothergirl', 'anothergirl@email.ca', 'somepassword'),
-    ('differentgirl', 'differentgirl@email.ca', 'somepassword');
+    ('differentgirl', 'differentgirl@email.ca', 'somepassword'),
+    ('testguy', 'testguy@email.ca', 'somepassword'),
+    ('testguy1', 'testguy1@email.ca', 'somepassword'),
+    ('testguy2', 'testguy2@email.ca', 'somepassword'),
+    ('testguy3', 'testguy3@email.ca', 'somepassword'),
+    ('testguy4', 'testguy4@email.ca', 'somepassword'),
+    ('testguy5', 'testguy5@email.ca', 'somepassword'),
+    ('testguy6', 'testguy6@email.ca', 'somepassword'),
+    ('testguy7', 'testguy7@email.ca', 'somepassword'),
+    ('testguy8', 'testguy8@email.ca', 'somepassword'),
+    ('testguy9', 'testguy9@email.ca', 'somepassword'),
+    ('testguy0', 'testguy0@email.ca', 'somepassword');
 
 
 INSERT INTO post (text, user_id)
