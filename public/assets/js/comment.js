@@ -1,30 +1,48 @@
-async function newCommentHandler(event) {
-    event.preventDefault();
-  
-    
-    const comment_text = document.getElementById("comment-textarea").value;
-    console.log(comment_text)
+const postContainer = document.getElementById('post-feed-results')
 
-    //which post does it belong to??
+
+async function newCommentHandler(commentId) {
   
-    // const response = await fetch(`/api/comment`, {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     comment_text
-    //   }),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // });
+  const comment_text = document.getElementById("comment-textarea").value
+    console.log(comment_text)  //because text area is in post-view
+
+    const response = await fetch(`/api/comment`, {
+      method: 'POST',
+      body: JSON.stringify({
+        comment_text
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   
-    // if (response.ok) {
+    if (response.ok) {
+      //add the text to the right field and reload
+      console.log('response ok')
+      document.location.reload('/feed');
       
-    //   //document.location.reload('/feed');
-    //   //update comment count
-    //   console.log('success')
-    // } else {
-    //   alert(response.statusText);
-    // }
+    } else {
+      console.log('error')
+    }
   }
+
+    
+  postContainer.addEventListener('click', async event => {
+    event.preventDefault()
+    console.log('click')
+    console.log(event.target.tagName)
+    if (event.target.tagName == 'BUTTON') { 
+      
+      console.log('button clicked')
+      const commentBtn = event.target 
+      const commentId = commentBtn.parentNode.dataset.commentId 
+      console.log(commentId)
+      
+      await newCommentHandler(commentId)
+      
+    } 
+  })
   
-  document.querySelector('#submit-comment').addEventListener('click', newCommentHandler);
+  
+  
+  

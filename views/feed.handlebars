@@ -8,10 +8,10 @@
       <button type="submit" id='submit-rant' class="btn btn-primary float-end"><i class="fa fa-bullhorn"></i></button>
     </form>
   </section>
-
+</div>
+<div id='post-feed-results' class='container-fluid d-flex flex-column justify-content-center align-items-center'>
   {{#each posts as |post|}}
     {{> post-view post}}
-    {{!-- comment box will show up here from post-view --}}
   {{/each}}
 </div>
 
