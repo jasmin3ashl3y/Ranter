@@ -4,6 +4,8 @@ async function newCommentHandler(event) {
     
     const comment_text = document.getElementById("comment-textarea").value;
     console.log(comment_text)
+
+    //which post does it belong to??
   
     // const response = await fetch(`/api/comment`, {
     //   method: 'POST',
@@ -18,6 +20,7 @@ async function newCommentHandler(event) {
     // if (response.ok) {
       
     //   //document.location.reload('/feed');
+    //   //update comment count
     //   console.log('success')
     // } else {
     //   alert(response.statusText);
