@@ -35,7 +35,8 @@ VALUES
     ('comment3', 1, 2),
     ('comment4', 4, 3),
     ('comment5', 5, 4),
-    ('comment6', 1, 4);
+    ('comment6', 1, 4),
+    ('down with mayonnaise', 2, 1)
 
 INSERT INTO heart (user_id, post_id)
 VALUES

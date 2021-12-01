@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
         })
 });
 
-//view all posts WORKS (except like_count)
+//view all posts WORKS 
 router.get('/', (req,res) => {
     Post.findAll({
         attributes: [
