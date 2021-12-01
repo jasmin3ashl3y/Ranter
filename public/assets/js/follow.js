@@ -57,6 +57,5 @@ resultsContainer.addEventListener('click', async e => {
             }
         }
     }
-
 })
 
