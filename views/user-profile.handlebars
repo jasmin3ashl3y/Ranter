@@ -1,0 +1,35 @@
+<div class="container-fluid">
+            <div class="col-sm-5 col-md-7 col-lg-5 mx-auto">
+                <section class="border border-2 py-3 px-5 my-3 mt-4 post card">
+                    <img src="assets/images/profile-icon.png" class="profile-image" width="150" height="150"/>
+                    <div class="card-content">
+                        <h6 class='ms-2 my-0'>@{{{this.username}}}</h6>
+                        <span class="btn-follow rounded-pill">follow</span>
+                        <textarea name="bio" form="outline rounded-3">Say something about yourself...</textarea>
+                    </div>
+                      
+                </section>
+            </div>
+
+            <div class="col-sm-5 col-md-7 col-lg-5 mx-auto">
+                <div class="card border-0 shadow rounded-6 my-5">
+                    <div class="card-body p-2 p-sm-5">
+
+                        <div class="">
+                            <p>Recent Rants</p>
+                        </div>
+                        
+                        <br></br>
+                        <div class="feed">
+                            
+                            {{{ body }}}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+<script src='../assets/js/user-profile.js'></script>
+<link rel="stylesheet" href="./assets/styles/style.css">

@@ -20,7 +20,7 @@ body {
     display: none;
 }
 
-
+/* post view pages */
 
 .post-text{
     background-color: rgb(228, 228, 228);
@@ -35,4 +35,11 @@ body {
 
 .fs-7 {
     font-size: 0.85rem;
+}
+
+/* user profile pages */
+
+.btn-follow {
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
 }
