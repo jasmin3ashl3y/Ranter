@@ -31,6 +31,7 @@ postContainer.addEventListener('submit', async event => {
   const result = await newCommentHandler(comment_text, logPostId) 
   if (result.ok) {
     console.log('success') 
+    document.location.reload('/feed');
   } else {
     console.log('no success')
   }
