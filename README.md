@@ -14,10 +14,10 @@ Ranter is a blog post website where you can rant to your heart's desire. Our ins
 ## Screenshots
 
 [Login page:]
-!(public/assets/images/login-page.PNG)
+!(../../assets/images/login-page.PNG)
 
 [Add a Rant:]
-!(public/assets/images/screenshot-rant.PNG)
+!(../../assets/images/screenshot-rant.PNG)
 
 ## Contributions
 
