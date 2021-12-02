@@ -28,6 +28,7 @@ router.use('/feed', async (req, res) => {
             'text', 
             'created_at',
             [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id)'),'heart_count'],
+            // [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE post.id = heart.post_id AND heart.user_id = user.id'), 'user_has_liked'],
             [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE post.id = comment.post_id)'), 'comment_count']
             
         ],
@@ -142,6 +143,7 @@ router.get('/user/:id', async (req, res) => {
                 'text', 
                 'created_at',
                 [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE posts.id = heart.post_id)'),'heart_count'],
+                // [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE posts.id = heart.post_id AND heart.user_id = user.id'), 'user_has_liked'],
                 [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE comment.post_id = posts.id)'), 'comment_count']
                 
             ],
@@ -175,6 +177,7 @@ router.get('/user/:id', async (req, res) => {
             createdAt,
             posts
         })
+        console.log(posts)
     })
     .catch(err => {
         res.status(404).json(err)
