@@ -1,5 +1,9 @@
 const resultsContainer = document.getElementById('user-search-results')
 
+function displayUserPage(userId) {
+    window.location.replace(`/user/${userId}`)
+}
+
 async function unfollowHandler(toUnfollowId) {
     const response = await fetch('/api/follow/remove', {
         method: 'POST',
@@ -56,6 +60,9 @@ resultsContainer.addEventListener('click', async e => {
                 toggleFollowBtn(followBtn)
             }
         }
+    }
+    else if (e.target.parentNode.dataset.userId) {
+        displayUserPage(e.target.parentNode.dataset.userId)
     }
 })
 

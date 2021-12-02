@@ -29,6 +29,14 @@ User.init(
                 isEmail:true
             }
         },
+        bio: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: null,
+            validate: {
+                len: [256]
+            }
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
