@@ -20,8 +20,15 @@
                </div>
             </div>
             <div>
-               here is a comment form
+               <form class="new-comment-form" data-post-Id={{{this.id}}}>
+                  <div class="mb-3">
+                     <label for="comment-textarea" class="form-label">Add your comments here..</label>
+                     <textarea class="form-control post-text comment-textarea" rows="1"></textarea>
+                  </div>
+                  <button type="submit" id='submit-comment' class="btn btn-primary float-end"><i class="fa fa-comments"></i></button>
+               </form>
             </div>
          </div>
       </div>
    </div>
+
