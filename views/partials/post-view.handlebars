@@ -9,9 +9,11 @@
          <div class='card-body'>
 
             <div class='d-flex'>
-               <p class='me-3'><i class="fa fa-heart"></i> {{heart_count}}</p>
-               <a data-bs-toggle="collapse" href="#comments{{id}}" role="button" aria-expanded="false" aria-controls="comments{{id}}">
-                  <i class="fa fa-comments"></i> {{comment_count}}
+               <a class='me-3' role='button' data-post-id={{id}}>
+                  <i class="fa fa-heart"></i> <span id='hearts{{id}}'>{{heart_count}}</span>
+               </a>
+               <a class='' data-bs-toggle="collapse" href="#comments{{id}}" role="button" aria-expanded="false" aria-controls="comments{{id}}">
+                  <i class="fa fa-comments"></i> <span>{{comment_count}}</span>
                </a>
             </div>
             <div class="collapse" id="comments{{id}}">

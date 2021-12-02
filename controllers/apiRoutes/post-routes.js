@@ -95,13 +95,14 @@ router.get('/:id', (req, res) => {
 
 //like a post using custom static method in Post.js
 router.put('/heart', (req, res) => {
-    Post.heart({post_id: req.body.post_id, user_id: req.body.user_id}, { Heart, Post })
-        .then(updatedData => res.json(updatedData))
+    Post.heart({post_id: req.body.post_id, user_id: req.session.user_id}, { Heart, Post })
+        .then(updatedData => {
+            res.status(200).json(updatedData)
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
-          
 });
 
 //update a post WORKS

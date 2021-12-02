@@ -2,26 +2,30 @@ const { Model, DataTypes, Sequelize } = require('sequelize')
 const sequelize = require('../config/connection')
 
 class Post extends Model {
-    static heart(body, models) {
-        return models.Heart.create({
-            user_id: body.user_id,
-            post_id: body.post_id
-        }).then(() => {
-            return Post.findOne({
-                where: {
-                    id: body.post_id
-                },
-                attributes: [
-                    'id',
-                    'text',
-                    'created_at',
-                    [
-                        sequelize.literal('(SELECT COUNT(*) FROM heart WHERE post.id = heart.post_id)'),
-                        'heart_count'
-                    ]
-                ]
-            })
+    static async heart(body, models) {
+        const heartExists = await models.Heart.findOne({
+            where: {
+                user_id: body.user_id,
+                post_id: body.post_id
+            }
         })
+        if (!heartExists) {
+            return models.Heart.create({
+                user_id: body.user_id,
+                post_id: body.post_id
+            }).then(() => {
+                return {message: 'added'}
+            })
+        } else {
+            return models.Heart.destroy({
+                where: {
+                    user_id: body.user_id,
+                    post_id: body.post_id
+                }
+            }).then(() => {
+                return {message: 'deleted'}
+            })
+        }
     }
 }
 
