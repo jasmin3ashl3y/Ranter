@@ -1,10 +1,10 @@
 <div class="container-fluid">
             <div class="col-sm-5 col-md-7 col-lg-5 mx-auto d-flex flex-column align-items-center">
-                <section class="border border-2 py-3 px-3 my-3 mt-4 post card"> 
+                <section id='user-profile-container' class="border border-2 py-3 px-3 my-3 mt-4 post card"> 
                     <div class='d-flex flex-row'>
-                        <img src="/assets/images/profile-icon.png" class="profile-image rounded-circle" style='background: red; width: 5rem; height: 5rem;'/>
+                        <img src="/assets/images/profile-icon.png" class="profile-image rounded-circle" style='width: 5rem; height: 5rem;'/>
                         
-                        <div class="card-content d-flex justify-content-between align-items-center w-100">
+                        <div class="card-content d-flex justify-content-between align-items-center w-100" data-user-id={{{this.id}}}>
                             <div>
                                 <h5 class='my-0 d-inline-block'>@{{{this.username}}}</h6>
                                 <p class='mb-0 fst-italic fw-light'>joined {{{format_date this.createdAt}}}</p>
@@ -24,12 +24,17 @@
                             {{/if}}
                             </button>
                             {{/unless}}
-                            {{!-- <textarea name="bio" form="outline rounded-3">Say something about yourself...</textarea> --}}
                         </div>
                     </div>         
 
                     <div class='p-3'>
-                        <p>{{{this.bio}}}</p>
+                        {{#if this.isCurrentUser}}
+                        <button id='bio-edit-btn' class='rounded-pill btn btn-primary btn-sm'>edit</button>
+                        {{/if}}
+                        <p id='bio-para' >{{{this.bio}}}</p>
+                        {{#if this.isCurrentUser}}
+                        <textarea id='bio-textarea' class='hide'></textarea>
+                        {{/if}}
                     </div>       
 
                       
