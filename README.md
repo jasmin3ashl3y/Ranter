@@ -13,9 +13,9 @@ Ranter is a blog post website where you can rant to your heart's desire. Our ins
 
 ## Screenshots
 
-[Login page:]!(../../assets/images/login-page.PNG)
+![Login page:](../../assets/images/login-page.PNG)
 
-[Add a Rant:]!(../../assets/images/screenshot-rant.PNG)
+![Add a Rant:](../../assets/images/screenshot-rant.PNG)
 
 ## Contributions
 
