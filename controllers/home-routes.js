@@ -5,13 +5,13 @@ const {userHandlers} = require('../controllers/apiRoutes/handlers')
 const { Op, QueryTypes, json } = require('sequelize')
 const { is_following } = require('../utils/helpers')
 
-router.use('/', (req, res) => {
-    if (req.loggedIn) {
-        window.location.replace('/login')
-    } else {
-        window.location.replace('/feed')
-    }
-})
+// router.use('/', (req, res) => {
+//     if (req.loggedIn) {
+//         window.location.replace('/login')
+//     } else {
+//         window.location.replace('/feed')
+//     }
+// })
 
 router.use('/login', (req, res) => {
     res.render('login')
