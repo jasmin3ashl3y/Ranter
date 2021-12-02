@@ -36,7 +36,7 @@
                 </section>
             </div>
 
-            <div class='container-fluid d-flex flex-column justify-content-center align-items-center'>
+            <div id='post-feed-results' class='container-fluid d-flex flex-column justify-content-center align-items-center'>
                 {{#each posts as |post|}}
                     {{> post-view post}}
                 {{/each}}
@@ -44,3 +44,5 @@
 </div>
 
 <script src='/assets/js/user-profile.js'></script>
+<script src='/assets/js/comment.js'></script>
+<script src='/assets/js/like.js'></script>

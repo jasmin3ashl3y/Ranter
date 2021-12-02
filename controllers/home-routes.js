@@ -143,7 +143,7 @@ router.get('/user/:id', async (req, res) => {
                 'text', 
                 'created_at',
                 [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE posts.id = heart.post_id)'),'heart_count'],
-                // [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE posts.id = heart.post_id AND heart.user_id = user.id'), 'user_has_liked'],
+                [sequelize.literal('(SELECT COUNT (*) FROM heart WHERE posts.id = heart.post_id AND user.id = heart.user_id)'), 'user_has_liked'],
                 [sequelize.literal('(SELECT COUNT (*) FROM comment WHERE comment.post_id = posts.id)'), 'comment_count']
                 
             ],
@@ -164,7 +164,6 @@ router.get('/user/:id', async (req, res) => {
         } ]
     })
     .then(dbUserResult => {
-        console.log(dbUserResult)
         const {id, username, bio, email, createdAt, posts} = dbUserResult.get({plain: true})
         res.render('user-profile', {
             loggedIn: req.session.loggedIn,
@@ -181,8 +180,6 @@ router.get('/user/:id', async (req, res) => {
     })
     .catch(err => {
         res.status(404).json(err)
-        console.log(err)
-        console.log(req.params.id)
     })
 })
 
