@@ -49,7 +49,7 @@ async function loginFormHandler(event) {
             console.log('success');
             document.location.replace('/feed');
         } else {
-            alert(response.statusText);
+            alert('username or email already taken');
         }
     }
 }
