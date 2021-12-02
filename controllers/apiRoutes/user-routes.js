@@ -92,5 +92,26 @@ router.get('/find/:term', (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
+router.put('/update-bio', (req, res) => {
+    console.log(req.body.newBio)
+    console.log(req.session.user_id)
+    User.update(
+        {
+            bio: req.body.newBio
+        },
+        {
+            where: {
+                id: req.session.user_id
+            }
+        }
+    )
+    .then(dbUserData => {
+        console.log(dbUserData)
+    })
+    .catch(err => {
+        res.status(400).json({err})
+        console.log(err)
+    })
+})
 
 module.exports = router 

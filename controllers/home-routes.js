@@ -58,8 +58,8 @@ router.use('/feed', async (req, res) => {
         res.render('feed', {
             posts,
             loggedIn: req.session.loggedIn,
-            username: req.session.username,
-            id: req.session.user_id
+            currentUsername: req.session.username,
+            currentId: req.session.user_id
         })
     })
 })
@@ -99,7 +99,6 @@ router.use('/post/:id', (req, res) => {
             }
             const post = dbPostData.get({plain: true})
             res.render('feed', {post})
-            console.log(post)
         })
         .catch(err => {
             console.log(err);
@@ -116,8 +115,8 @@ router.use('/users/find/:query', async (req, res) => {
         users.forEach(user => user.following = is_following(user.id, usersFollowingIds))
         res.render('user-search', {
             users, 
-            username: req.session.username,
-            id: req.session.user_id,
+            currentUsername: req.session.username,
+            currentId: req.session.user_id,
             loggedIn: req.session.loggedIn,
             usersFollowingIds
         })
@@ -166,6 +165,8 @@ router.get('/user/:id', async (req, res) => {
     .then(dbUserResult => {
         const {id, username, bio, email, createdAt, posts} = dbUserResult.get({plain: true})
         res.render('user-profile', {
+            currentUsername: req.session.username,
+            currentId: req.session.user_id,
             loggedIn: req.session.loggedIn,
             id, 
             isFollowing: is_following(id, usersFollowingIds),
@@ -176,7 +177,6 @@ router.get('/user/:id', async (req, res) => {
             createdAt,
             posts
         })
-        console.log(posts)
     })
     .catch(err => {
         res.status(404).json(err)

@@ -34,7 +34,7 @@ User.init(
             allowNull: true,
             defaultValue: null,
             validate: {
-                len: [256]
+                len: [0, 256]
             }
         },
         password: {
