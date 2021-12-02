@@ -10,6 +10,9 @@ function search(query) {
 function searchHandler(e) {
     e.preventDefault()
     const query = searchField.value.trim()
+    if (!query) {
+        return
+    }
     search(query)
 }
 

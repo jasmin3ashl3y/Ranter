@@ -115,6 +115,9 @@ router.use('/post/:id', (req, res) => {
 });
 
 router.use('/users/find/:query', async (req, res) => {
+    if (!req.params.query) {
+        res.redirect('/feed')
+    }
     const usersFollowing = await sequelize.query(`(SELECT followed_id FROM follow WHERE follower_id = ${req.session.user_id})`, { type: QueryTypes.SELECT })
     const usersFollowingIds = usersFollowing.map(({followed_id}) => followed_id)
     userHandlers.getUsers(req.params.query)
