@@ -4,7 +4,7 @@ const loggoutBtn = document.querySelector('#logout')
 const userProfileBtn = document.getElementById('user-profile')
 
 function search(query) {
-    window.location.href = (`http://localhost:3003/users/find/${query}`)
+    window.location.href = (`/users/find/${query}`)
 }
 
 function searchHandler(e) {

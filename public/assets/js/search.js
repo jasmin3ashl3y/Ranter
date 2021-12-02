@@ -2,7 +2,7 @@ const searchField = document.getElementById('search-input')
 const searchForm = document.getElementById('search-form')
 
 function search(query) {
-    window.location.href = (`http://localhost:3003/users/find/${query}`)
+    window.location.href = (`/users/find/${query}`)
 }
 
 function searchHandler(e) {

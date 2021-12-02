@@ -71,5 +71,5 @@ function toggleForms(e) {
 formContainer.addEventListener('click', toggleForms);
   
 document.querySelector('#signin').addEventListener('click', loginFormHandler);
-document.querySelector('.signup-form').addEventListener('click', signupFormHandler);
+document.querySelector('#signup').addEventListener('click', signupFormHandler);
 
