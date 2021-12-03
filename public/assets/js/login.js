@@ -49,7 +49,8 @@ async function loginFormHandler(event) {
             console.log('success');
             document.location.replace('/feed');
         } else {
-            alert('username or email already taken');
+          const message = await(response.json())
+            alert('email or username already used');
         }
     }
 }

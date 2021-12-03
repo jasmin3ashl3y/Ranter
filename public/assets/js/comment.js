@@ -15,7 +15,6 @@ const postContainer = document.getElementById('post-feed-results')
         'Content-Type': 'application/json'
       }
     });
-
   }
 
 
