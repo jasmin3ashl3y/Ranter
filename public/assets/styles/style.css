@@ -32,6 +32,10 @@ body {
     width: 30rem;
 }
 
+.user-pill {
+    width: 40rem;
+}
+
 
 .fs-7 {
     font-size: 0.85rem;
@@ -52,4 +56,15 @@ body {
     background: url('../images/profile-icon.png');
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 420px) {
+    .post {
+        width: 90%
+    }
+    .user-pill {
+        width: 95vw;
+
+    }
+
 }
